@@ -437,6 +437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 8489370539411753759}
   _rigidbody: {fileID: 1565629571226182142}
+  _forcePower: 5
 --- !u!50 &1565629571226182142
 Rigidbody2D:
   serializedVersion: 4
