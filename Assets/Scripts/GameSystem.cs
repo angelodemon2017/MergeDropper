@@ -20,6 +20,7 @@ public class GameSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _failPanelScore;
     [SerializeField] private TextMeshProUGUI _failPanelHiScore;
     [SerializeField] private Image _failSignal;
+    [SerializeField] private SpriteRenderer _backGroundImage;
 
     private List<int> _queu = new();
 
@@ -45,6 +46,7 @@ public class GameSystem : MonoBehaviour
         Instance = this;
         _libraryObjects.IsInit = false;
         ResetGame();
+        _backGroundImage.sprite = _libraryObjects.BackGround;
     }
 
     private void Update()

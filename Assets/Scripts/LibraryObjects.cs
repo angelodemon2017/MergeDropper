@@ -6,6 +6,7 @@ public class LibraryObjects : ScriptableObject
 {
     [SerializeField] private int _maxLevelSpawn;
     [SerializeField] private int _rangeRandom;
+    [SerializeField] private Sprite _backGround;
     [SerializeField] private List<MergeObject> _objects;
     private Dictionary<int, MergeObject> _cashObjects = new();
     public bool IsInit = false;
@@ -14,6 +15,7 @@ public class LibraryObjects : ScriptableObject
 
     public float GetRandomRot => Random.Range(0, DefStepRandRotat) * 360 / DefStepRandRotat;
     public int NextIndex => Random.Range(1, _maxLevelSpawn);
+    public Sprite BackGround => _backGround;
     public int GetNextIndex(int cap)
     {
         var max = cap <= _maxLevelSpawn ? cap : _maxLevelSpawn;
