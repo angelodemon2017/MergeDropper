@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MergeObject : MonoBehaviour
@@ -14,6 +15,7 @@ public class MergeObject : MonoBehaviour
     public bool isWorking = true;
     public int Level => _level;
     public Rigidbody2D RB => _rigidbody;
+    public bool IsFinal = false;
 
     private void Awake()
     {
@@ -46,7 +48,7 @@ public class MergeObject : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!isWorking)
+        if (!isWorking || IsFinal)
         {
             return;
         }
@@ -105,9 +107,39 @@ public class MergeObject : MonoBehaviour
                 if (_isInitial)
                 {
                     Impulse();
-                    GameSystem.Instance.Spawn(_level + 1, _targetMerged);
+                    GameSystem.Instance.Spawn(_level + 1, _targetMerged, true);
                 }
             }
+        }
+    }
+
+    public void Bonus1(float power)
+    {
+        StartCoroutine(MixCoroutine(power));
+    }
+
+    private IEnumerator MixCoroutine(float power)
+    {
+        _rigidbody.AddForce(Vector2.up * power * _rigidbody.mass);
+        yield return new WaitForSeconds(0.1f);
+        if (_rigidbody != null)
+        {
+            _rigidbody.AddForce(Vector2.left * power * _rigidbody.mass);
+        }
+        yield return new WaitForSeconds(0.2f);
+        if (_rigidbody != null)
+        {
+            _rigidbody.AddForce(Vector2.up * power * _rigidbody.mass);
+        }
+        yield return new WaitForSeconds(0.2f);
+        if (_rigidbody != null)
+        {
+            _rigidbody.AddForce(Vector2.right * power * _rigidbody.mass);
+        }
+        yield return new WaitForSeconds(0.1f);
+        if (_rigidbody != null)
+        {
+            _rigidbody.AddForce(Vector2.down * power * _rigidbody.mass);
         }
     }
 
@@ -129,7 +161,7 @@ public class MergeObject : MonoBehaviour
 
             var totalPulse = _level * _forcePower * (_distanceAction - dist + 1) * GameSystem.Instance.LO.DefForce;
 
-            rb.AddForce(vectorTemp * totalPulse);
+            rb.RB.AddForce(vectorTemp * totalPulse);
         }
     }
 

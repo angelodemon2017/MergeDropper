@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxLevelSpawn: 7
   _rangeRandom: 6
-  _backGround: {fileID: 21300000, guid: 97f926d45c2a9564fb82587a9c3d9ab9, type: 3}
+  _backGround: {fileID: 21300000, guid: 9f139e364dcea104093d4efe58dc9af2, type: 3}
   _objects:
   - {fileID: -6142139756661438739, guid: 6c123bc7770223b49bb3b69802edb234, type: 3}
   - {fileID: -6142139756661438739, guid: 0761f242f4b9f7841ae722a765291d80, type: 3}
@@ -30,6 +30,8 @@ MonoBehaviour:
   - {fileID: -6142139756661438739, guid: fac901bef9bb73d4598b7173ee6da356, type: 3}
   - {fileID: -6142139756661438739, guid: 6a59351fc61e6834cbb91e90f569c6c5, type: 3}
   - {fileID: -6142139756661438739, guid: 2f3e83f9cac01674d8a51c9d34f28897, type: 3}
+  _VFXMergeEffect: {fileID: 6511384514936467557, guid: ea0060767283a8f468820552843edf9c, type: 3}
+  _mergeClip: {fileID: 8300000, guid: 06be873052c684e2fa341c2e02367b8f, type: 3}
   IsInit: 1
   DefForce: 5
   DefStepRandRotat: 4

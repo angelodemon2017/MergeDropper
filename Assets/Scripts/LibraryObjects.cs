@@ -8,6 +8,9 @@ public class LibraryObjects : ScriptableObject
     [SerializeField] private int _rangeRandom;
     [SerializeField] private Sprite _backGround;
     [SerializeField] private List<MergeObject> _objects;
+    [SerializeField] private GameObject _VFXMergeEffect;
+    [SerializeField] private AudioClip _mergeClip;
+
     private Dictionary<int, MergeObject> _cashObjects = new();
     public bool IsInit = false;
     public float DefForce = 2f;
@@ -16,6 +19,10 @@ public class LibraryObjects : ScriptableObject
     public float GetRandomRot => Random.Range(0, DefStepRandRotat) * 360 / DefStepRandRotat;
     public int NextIndex => Random.Range(1, _maxLevelSpawn);
     public Sprite BackGround => _backGround;
+    public int MaxLvl => _objects.Count;
+    public GameObject GetVFXMergeEffect => _VFXMergeEffect;
+    public AudioClip GetAFXMergeEffect => _mergeClip;
+
     public int GetNextIndex(int cap)
     {
         var max = cap <= _maxLevelSpawn ? cap : _maxLevelSpawn;
@@ -62,7 +69,9 @@ public class LibraryObjects : ScriptableObject
             {
                 _objects[i].SetLevel(i + 1);
 
-                _cashObjects.Add(i + 1, _objects[i]);
+                _objects[i].IsFinal = i == _objects.Count - 1;
+
+                _cashObjects.Add(i + 1, _objects[i]);                
             }
         }
     }

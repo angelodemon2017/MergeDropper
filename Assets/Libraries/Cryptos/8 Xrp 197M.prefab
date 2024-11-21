@@ -469,4 +469,5 @@ MonoBehaviour:
   _distanceAction: 2
   _distancePulse: 1.2
   isWorking: 1
+  IsFinal: 0
   _text: {fileID: 8489370539411753759}
