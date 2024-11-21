@@ -13,7 +13,6 @@ public class GameSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _nextLevelText;
     [SerializeField] private TextMeshProUGUI _queuText;
     [SerializeField] private PointSpawn _pointSpawn;
-    [SerializeField] private MergeObject _mergePrefab;
     [SerializeField] private List<Rigidbody2D> _mergeObjects;
     [SerializeField] private float _forcePowerSpawn = 1f;
     [SerializeField] private GameObject _failPanel;
@@ -35,7 +34,7 @@ public class GameSystem : MonoBehaviour
     private float _failHight = 3.8f;
     private bool _isFail = false;
     private float _failTimer = 0f;
-    private float _failTime = 6f;
+    private float _failTime = 6f;//999999f;//6f;
     private float _nextRot = 0f;
 
     public LibraryObjects LO => _libraryObjects;

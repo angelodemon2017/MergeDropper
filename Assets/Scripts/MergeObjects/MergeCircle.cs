@@ -11,5 +11,6 @@ public class MergeCircle : MergeObject
 
         transform.localScale = Vector3.one * _distanceAction;
         _text.text = $"{_level}";
+        _text.fontSize = 15;
     }
 }

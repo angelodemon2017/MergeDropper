@@ -33,14 +33,14 @@ public class MergeObject : MonoBehaviour
         UpdateObject();
     }
 
-    private void CalcDistanceAction()
+    internal virtual void CalcDistanceAction()
     {
-        float tempMulti = 0.1f;
-        for (int i = 0; i < _level - 1; i++)
-        {
-            tempMulti += 0.03f * (_level + 1);
-        }
-        _distanceAction = 0.5f + tempMulti;
+        /*        float tempMulti = 0.1f;
+                for (int i = 0; i < _level - 1; i++)
+                {
+                    tempMulti += 0.03f * (_level + 1);
+                }/**/
+        _distanceAction = 0.2f + 0.2f * _level;
         _distancePulse = _distanceAction * 0.6f;
     }
 
