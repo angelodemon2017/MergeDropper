@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using YG;
 
 public class GameSystem : MonoBehaviour
 {
@@ -18,18 +19,17 @@ public class GameSystem : MonoBehaviour
     [SerializeField] private GameObject _failPanel;
     [SerializeField] private TextMeshProUGUI _failPanelScore;
     [SerializeField] private TextMeshProUGUI _failPanelHiScore;
+    [SerializeField] private TextMeshProUGUI _failPanelHiScoreOnStartScreen;
     [SerializeField] private Image _failSignal;
     [SerializeField] private SpriteRenderer _backGroundImage;
     [SerializeField] private List<Transform> _queuePositions;
     [SerializeField] private float _powerBust1;
-    [SerializeField] private Button _buttonMix1;
-    [SerializeField] private Button _buttonMix2;
     [SerializeField] private Button _mainTap;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private Animator _mix2;
-
-    private bool _isAudioEnable = true;
-    private bool _isVFXEnable = true;
+    [SerializeField] private YandexProvider _yandexProvider;
+    [SerializeField] private Toggle _toggleAudio;
+    [SerializeField] private Toggle _toggleVFX;
 
     private List<MergeObject> _queue = new();
     private List<int> _queu = new();
@@ -39,7 +39,6 @@ public class GameSystem : MonoBehaviour
     private int nextLevel = 1;
     private float _intervalSpawn = 0.1f;
     private int _currentScore = 0;
-    private int _hiScore = 0;
     private int _currentMaxIndex = 1;
 
     private float _failHight = 3.8f;
@@ -48,6 +47,7 @@ public class GameSystem : MonoBehaviour
     private float _failTime = 6f;//999999f;//6f;
     private float _nextRot = 0f;
 
+    private PlayerData _playerData => PlayerDataController.playerData;//TODO
     public LibraryObjects LO => _libraryObjects;
     public List<MergeObject> Rigidbody2s => _mergeObjects;
 
@@ -55,12 +55,17 @@ public class GameSystem : MonoBehaviour
     {
         Instance = this;
         _mix2.speed = 0;
-        _buttonMix1.onClick.AddListener(Bust1);
-        _buttonMix2.onClick.AddListener(Bonus2);
         _mainTap.onClick.AddListener(OnTouch);
         _libraryObjects.IsInit = false;
         ResetGame();
         _backGroundImage.sprite = _libraryObjects.BackGround;
+    }
+
+    public void InitPlayerData()
+    {
+        _toggleAudio.isOn = _playerData.IsAudio;
+        _toggleVFX.isOn = _playerData.IsVFX;
+        _failPanelHiScoreOnStartScreen.text = $"{_playerData.HiScore}";
     }
 
     private void Update()
@@ -85,19 +90,7 @@ public class GameSystem : MonoBehaviour
     {
         if (_mergeObjects.Any(x => x.transform.position.y > _failHight))
         {
-            _failTimer += Time.deltaTime;
-            if (_failTimer > _failTime)
-            {
-                _isFail = true;
-
-                if (_hiScore < _currentScore)
-                {
-                    _hiScore = _currentScore;
-                    _failPanelHiScore.text = $"HI Score:{_hiScore}";
-                }
-                _failPanel.SetActive(true);
-                _failTimer = 0;
-            }
+            Failing();
         }
         else
         {
@@ -106,19 +99,48 @@ public class GameSystem : MonoBehaviour
         _failSignal.enabled = _failTimer > 1f;
     }
 
+    private void Failing()
+    {
+        _failTimer += Time.deltaTime;
+        if (_failTimer > _failTime)
+        {
+            YandexGame.GameplayStop();
+            _isFail = true;
+
+            UpdateHiScore();
+            _failPanel.SetActive(true);
+            _failTimer = 0;
+        }
+    }
+
+    private void UpdateHiScore()
+    {
+        _yandexProvider.UpdateLeaderHiScore(_currentScore);
+        if (_playerData.HiScore < _currentScore)
+        {
+            _playerData.HiScore = _currentScore;
+            PlayerDataController.Save();
+            _failPanelHiScore.text = $"HI Score:{_playerData.HiScore}";
+        }
+        else
+        {
+            YandexGame.FullscreenShow();
+        }
+    }
+
     private void CheckInput()
     {
-        if (Input.GetKey(KeyCode.Z))
+/*        if (Input.GetKey(KeyCode.Z))
         {
             OnTouch();
-        }
+        }/**/
     }
 
     private void OnTouch()
     {
         if (_intervalSpawn <= 0)
         {
-//            _intervalSpawn = 0.2f;
+            _intervalSpawn = 0.2f;
 
             Spawn(nextLevel, _pointSpawn.transform.position);
 
@@ -135,11 +157,11 @@ public class GameSystem : MonoBehaviour
     {
         if (isMerge)
         {
-            if (_isVFXEnable)
+            if (_playerData.IsVFX)
             {
                 Instantiate(_libraryObjects.GetVFXMergeEffect, posit, Quaternion.identity);
             }
-            if (_isAudioEnable)
+            if (_playerData.IsAudio && _yandexProvider.IsActiveGame)
             {
                 _audioSource.pitch = (float)level / (float)_libraryObjects.MaxLvl * 2 + 1;
                 _audioSource.PlayOneShot(_libraryObjects.GetAFXMergeEffect);
@@ -191,6 +213,7 @@ public class GameSystem : MonoBehaviour
 
     public void ResetGame()
     {
+        YandexGame.GameplayStart();
         _isFail = false;
         _failPanel.SetActive(false);
         _currentMaxIndex = 3;
@@ -241,11 +264,13 @@ public class GameSystem : MonoBehaviour
 
     public void SwitchAudio(bool isEnbl)
     {
-        _isAudioEnable = isEnbl;
+        _playerData.IsAudio = isEnbl;
+        PlayerDataController.Save();
     }
 
     public void SwitchVFX(bool isEnbl)
     {
-        _isVFXEnable = isEnbl;
+        _playerData.IsVFX = isEnbl;
+        PlayerDataController.Save();
     }
 }

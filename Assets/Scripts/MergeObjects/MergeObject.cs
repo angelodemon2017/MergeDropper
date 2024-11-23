@@ -177,6 +177,6 @@ public class MergeObject : MonoBehaviour
 
     internal virtual void UpdateObject()
     {
-        _rigidbody.mass = 0.1f * _level;
+        _rigidbody.mass = 2 + 0.5f * _level;
     }
 }
