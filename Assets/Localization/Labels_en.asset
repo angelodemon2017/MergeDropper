@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Labels_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 9722a0600fd397f4aa1d768f9040cdaf, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 19427663872
+    m_Localized: 'Hello!
+
+      Try get self BTC!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 640939630592
+    m_Localized: 'Your hiscore:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 755255386112
+    m_Localized: GO!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1131014692864
+    m_Localized: LEADERBOARD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1248413261824
+    m_Localized: MENU
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1426461466624
+    m_Localized: VFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1545114132480
+    m_Localized: AUDIO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1708662628352
+    m_Localized: FAIL!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1883753848832
+    m_Localized: score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2159353176064
+    m_Localized: TRY AGAIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2356649041920
+    m_Localized: SHAKE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2568201347072
+    m_Localized: MIX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30584126218240
+    m_Localized: hiscore
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 using YG;
+using UnityEngine.Localization;
 
 public class GameSystem : MonoBehaviour
 {
@@ -53,6 +54,8 @@ public class GameSystem : MonoBehaviour
 
     private void Awake()
     {
+//        _localizedHiScore.StringChanged += UpdateHiScoreLabel;
+
         Instance = this;
         _mix2.speed = 0;
         _mainTap.onClick.AddListener(OnTouch);
@@ -65,7 +68,7 @@ public class GameSystem : MonoBehaviour
     {
         _toggleAudio.isOn = _playerData.IsAudio;
         _toggleVFX.isOn = _playerData.IsVFX;
-        _failPanelHiScoreOnStartScreen.text = $"{_playerData.HiScore}";
+        _failPanelHiScoreOnStartScreen.text = $"{_playerData.HiScore}"; 
     }
 
     private void Update()
@@ -108,9 +111,26 @@ public class GameSystem : MonoBehaviour
             _isFail = true;
 
             UpdateHiScore();
+            _failPanelHiScore.text = $"{_hiscoreLabel}:{_playerData.HiScore}";
             _failPanel.SetActive(true);
             _failTimer = 0;
         }
+    }
+
+//    [SerializeField] private LocalizedString _localizedHiScore;
+    private string _hiscoreLabel = "";
+
+    public void UpdateHiScoreLabel(string text)
+    {
+        _hiscoreLabel = text;
+    }
+
+//    [SerializeField] private LocalizedString _localizedScore;
+    private string _scoreLabel = "";
+
+    public void UpdateScoreLabel(string text)
+    {
+        _scoreLabel = text;
     }
 
     private void UpdateHiScore()
@@ -120,7 +140,8 @@ public class GameSystem : MonoBehaviour
         {
             _playerData.HiScore = _currentScore;
             PlayerDataController.Save();
-            _failPanelHiScore.text = $"HI Score:{_playerData.HiScore}";
+
+            _failPanelHiScore.text = $"{_hiscoreLabel}:{_playerData.HiScore}";
         }
         else
         {
@@ -222,7 +243,7 @@ public class GameSystem : MonoBehaviour
         _mergeObjects.Clear();
 
         _currentScore = 0;
-        _scoreText.text = $"score:{_currentScore}";
+        _scoreText.text = $"{_scoreLabel}:{_currentScore}";
 
         NextSpawn(1);
 
@@ -242,7 +263,7 @@ public class GameSystem : MonoBehaviour
     {
         _mergeObjects.Remove(mergeObject);
         _currentScore += mergeObject.Level * mergeObject.Level;
-        _scoreText.text = $"score:{_currentScore}";
+        _scoreText.text = $"{_scoreLabel}:{_currentScore}";
         _failPanelScore.text = _scoreText.text;
 
         if (_currentMaxIndex < mergeObject.Level)
