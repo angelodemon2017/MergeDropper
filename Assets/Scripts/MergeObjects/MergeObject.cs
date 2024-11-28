@@ -120,26 +120,22 @@ public class MergeObject : MonoBehaviour
 
     private IEnumerator MixCoroutine(float power)
     {
-        _rigidbody.AddForce(Vector2.up * power * _rigidbody.mass);
+        CallImpulse(Vector2.up, power);
         yield return new WaitForSeconds(0.1f);
-        if (_rigidbody != null)
-        {
-            _rigidbody.AddForce(Vector2.left * power * _rigidbody.mass);
-        }
+        CallImpulse(Vector2.left, power);
         yield return new WaitForSeconds(0.2f);
-        if (_rigidbody != null)
-        {
-            _rigidbody.AddForce(Vector2.up * power * _rigidbody.mass);
-        }
+        CallImpulse(Vector2.up, power);
         yield return new WaitForSeconds(0.2f);
-        if (_rigidbody != null)
-        {
-            _rigidbody.AddForce(Vector2.right * power * _rigidbody.mass);
-        }
+        CallImpulse(Vector2.right, power);
         yield return new WaitForSeconds(0.1f);
+        CallImpulse(Vector2.down, power);
+    }
+
+    public void CallImpulse(Vector2 dir, float power)
+    {
         if (_rigidbody != null)
         {
-            _rigidbody.AddForce(Vector2.down * power * _rigidbody.mass);
+            _rigidbody.AddForce(dir * power * _rigidbody.mass);
         }
     }
 

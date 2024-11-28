@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 using YG;
-using UnityEngine.Localization;
 
 public class GameSystem : MonoBehaviour
 {
@@ -68,7 +67,7 @@ public class GameSystem : MonoBehaviour
     {
         _toggleAudio.isOn = _playerData.IsAudio;
         _toggleVFX.isOn = _playerData.IsVFX;
-        _failPanelHiScoreOnStartScreen.text = $"{_playerData.HiScore}"; 
+        _failPanelHiScoreOnStartScreen.text = $"{_playerData.HiScore}";
     }
 
     private void Update()
@@ -197,7 +196,8 @@ public class GameSystem : MonoBehaviour
         newObj.transform.position = posit;
         newObj.transform.rotation = Quaternion.Euler(0, 0, _nextRot);
         _mergeObjects.Add(newObj);
-        newObj.RB.AddForce(Vector2.down * _forcePowerSpawn);
+        newObj.CallImpulse(Vector2.down, _forcePowerSpawn);
+//        newObj.RB.AddForce(Vector2.down * _forcePowerSpawn);
     }
 
     private void NextSpawn(int lvl)
