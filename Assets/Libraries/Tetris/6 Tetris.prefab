@@ -1081,7 +1081,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.89100015, y: 0.83656293, z: 0.026408307}
-  m_LocalScale: {x: 0.52895224, y: 0.52895224, z: 0.52895224}
+  m_LocalScale: {x: 0.44880795, y: 0.44880795, z: 0.44880795}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1922346328908959287}
@@ -1100,7 +1100,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.6
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -1131,7 +1131,8 @@ MonoBehaviour:
   _forcePower: 3
   _rootColliders: {fileID: 1922346328908959287}
   _level: 6
-  _distanceAction: 1.65
-  _distancePulse: 0.99
+  _distanceAction: 1.4
+  _distancePulse: 0.84000003
   isWorking: 1
+  IsFinal: 0
   _text: {fileID: 8489370539411753759}
