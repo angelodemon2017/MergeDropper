@@ -167,7 +167,10 @@ public class MergeObject : MonoBehaviour
         Destroy(_rigidbody);
         foreach (Transform child in _rootColliders)
         {
-            child.GetComponent<Collider2D>().isTrigger = true;
+            if (child.TryGetComponent(out Collider2D col))
+            {
+                col.isTrigger = true;
+            }
         }
     }
 

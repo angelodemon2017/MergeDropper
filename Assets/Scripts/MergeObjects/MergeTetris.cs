@@ -5,7 +5,8 @@ public class MergeTetris : MergeObject
 {
     [SerializeField] private TextMeshProUGUI _text;
 
-    private float AddedMulti = 0.85f;
+    private float AddedMulti = 0.4f;
+    private float _subStep = 0.01f;
 
     internal override void UpdateObject()
     {
@@ -14,9 +15,9 @@ public class MergeTetris : MergeObject
         float totalMulti = AddedMulti;
         for (int i = 0; i < _level; i++)
         {
-            totalMulti *= AddedMulti;
+            totalMulti += _subStep;
         }
-        transform.localScale = Vector3.one * _distanceAction * totalMulti;
+        transform.localScale = Vector3.one * totalMulti;
         _text.text = $"{_level}";
     }
 }

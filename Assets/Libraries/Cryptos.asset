@@ -35,3 +35,5 @@ MonoBehaviour:
   IsInit: 0
   DefForce: 5
   DefStepRandRotat: 4
+  HelloPhrase: Hello! Try get self BTC!
+  LeaderKey: CryptoTop

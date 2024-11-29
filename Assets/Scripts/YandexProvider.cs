@@ -12,6 +12,7 @@ public class YandexProvider : MonoBehaviour
     [SerializeField] private GameSystem _gameSystem;
     [SerializeField] private GameObject _loadingIndicator;
     [SerializeField] private GameObject _buttonStart;
+    [SerializeField] private LeaderboardYG _leaderboardYG;
 
     public string _currentLanguage;
 
@@ -33,6 +34,7 @@ public class YandexProvider : MonoBehaviour
         YandexGame.RewardVideoEvent += DoneADS;
         YandexGame.GetDataEvent += LoadedData;
         YandexGame.onVisibilityWindowGame += ToggleVisibleTab;
+        _leaderboardYG.SetNameLB(_gameSystem.LO.LeaderKey);
 
         _buttonMix1.onClick.AddListener(ShowRewAds1);
         _buttonMix2.onClick.AddListener(ShowRewAds2);
@@ -60,7 +62,6 @@ public class YandexProvider : MonoBehaviour
         _gameSystem.InitPlayerData();
         var lang = YandexGame.EnvironmentData.language;
         _currentLanguage = lang;
-        Debug.LogError($"LoadedData({lang})");
         YandexGame.GameReadyAPI();
     }
     private void ChangeLanguage(string localeIdentifier)

@@ -15,6 +15,8 @@ public class LibraryObjects : ScriptableObject
     public bool IsInit = false;
     public float DefForce = 2f;
     public float DefStepRandRotat = 4;
+    public string HelloPhrase;
+    public string LeaderKey;
 
     public float GetRandomRot => Random.Range(0, DefStepRandRotat) * 360 / DefStepRandRotat;
     public int NextIndex => Random.Range(1, _maxLevelSpawn);

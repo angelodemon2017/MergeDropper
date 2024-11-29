@@ -2681,7 +2681,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: 9f139e364dcea104093d4efe58dc9af2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea4751c95e74e2044a8815b974999993, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.58431375}
   m_FlipX: 0
   m_FlipY: 0
@@ -2749,7 +2749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 14da0885d0a1f8f41a3cd96c5072dbe4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ee0eb1c7f8d826646949178b09e87d51, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4181,13 +4181,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3349310a661c2f8418132b8308c458da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _libraryObjects: {fileID: 11400000, guid: 47f8d5aa904096a4886601442b8f1570, type: 2}
+  _libraryObjects: {fileID: 11400000, guid: 7f45ab10b73df2142a0eec1b070a52e8, type: 2}
   _scoreText: {fileID: 214638132}
   _nextLevelText: {fileID: 1151945616}
   _queuText: {fileID: 1830281659}
   _pointSpawn: {fileID: 1726020834}
   _mergeObjects: []
-  _forcePowerSpawn: 500
+  _forcePowerSpawn: 400
   _failPanel: {fileID: 395631408}
   _failPanelScore: {fileID: 677435922}
   _failPanelHiScore: {fileID: 700797755}
@@ -4332,6 +4332,7 @@ MonoBehaviour:
   _gameSystem: {fileID: 970015050}
   _loadingIndicator: {fileID: 1818561602}
   _buttonStart: {fileID: 888105919}
+  _leaderboardYG: {fileID: 1617209696}
   _currentLanguage: 
   _buttonMix1: {fileID: 730600863}
   _buttonMix2: {fileID: 1443000188}
@@ -6362,7 +6363,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:9722a0600fd397f4aa1d768f9040cdaf
     m_TableEntryReference:
-      m_KeyId: 19427663872
+      m_KeyId: 1775539182018560
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

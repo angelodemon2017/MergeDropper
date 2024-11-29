@@ -72,6 +72,12 @@ MonoBehaviour:
     m_Localized: hiscore
     m_Metadata:
       m_Items: []
+  - m_Id: 1775539182018560
+    m_Localized: 'Hello!
+
+      Merge identical tetrisins'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
