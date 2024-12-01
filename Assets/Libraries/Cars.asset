@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab157c5a78d06849b1f18980362cdf8, type: 3}
+  m_Name: Cars
+  m_EditorClassIdentifier: 
+  _maxLevelSpawn: 4
+  _rangeRandom: 6
+  _backGround: {fileID: 21300000, guid: becb4e469ea2fa647aa640ae0e8b988b, type: 3}
+  _objects:
+  - {fileID: 5786371687787588975, guid: 02e04b94ea5655e45987b848c7522722, type: 3}
+  - {fileID: 4855860229128478004, guid: 371e10b77989df040a1a7457a7670859, type: 3}
+  - {fileID: 5951173326590922774, guid: 6e14628146a2c164693a08f2c518917b, type: 3}
+  - {fileID: 8879128936525716641, guid: 5082a1f8995d97144aa91b03a0bbf54c, type: 3}
+  - {fileID: 8879128936525716641, guid: ad1ce8fbda1e18f41819f7101189ad22, type: 3}
+  - {fileID: 8879128936525716641, guid: 9b9c19a2c7ced854fb80281e559f01bb, type: 3}
+  - {fileID: 8879128936525716641, guid: 9d53a955c8b6a2c4283519984ea8b838, type: 3}
+  - {fileID: 8879128936525716641, guid: b09dd2c2abde8234db4b36f9c6e92fc2, type: 3}
+  - {fileID: 8879128936525716641, guid: 0219ffcfc497dc54a8de02956d87962e, type: 3}
+  - {fileID: 8879128936525716641, guid: e5071d3d932d28940bdabe253b28114b, type: 3}
+  _VFXMergeEffect: {fileID: 5368954835445325026, guid: 9849720e49ac99240b2fe3a0845c9b9d, type: 3}
+  _mergeClip: {fileID: 8300000, guid: ec1a802939afb44779fc3c760aac56ef, type: 3}
+  IsInit: 1
+  DefForce: 5
+  DefStepRandRotat: 4
+  HelloPhrase: Hello! Try get self BTC!
+  LeaderKey: CryptoTop
