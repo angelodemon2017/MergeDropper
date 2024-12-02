@@ -27,7 +27,7 @@ MonoBehaviour:
   - {fileID: 8879128936525716641, guid: 0219ffcfc497dc54a8de02956d87962e, type: 3}
   - {fileID: 8879128936525716641, guid: e5071d3d932d28940bdabe253b28114b, type: 3}
   _VFXMergeEffect: {fileID: 5368954835445325026, guid: 9849720e49ac99240b2fe3a0845c9b9d, type: 3}
-  _mergeClip: {fileID: 8300000, guid: ec1a802939afb44779fc3c760aac56ef, type: 3}
+  _mergeClip: {fileID: 8300000, guid: ef2d93fb4586f6844a9032002ea7baf7, type: 3}
   IsInit: 1
   DefForce: 5
   DefStepRandRotat: 4

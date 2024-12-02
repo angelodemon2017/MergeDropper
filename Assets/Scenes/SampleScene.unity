@@ -2681,7 +2681,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: ea4751c95e74e2044a8815b974999993, type: 3}
+  m_Sprite: {fileID: 21300000, guid: becb4e469ea2fa647aa640ae0e8b988b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.58431375}
   m_FlipX: 0
   m_FlipY: 0
@@ -4181,7 +4181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3349310a661c2f8418132b8308c458da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _libraryObjects: {fileID: 11400000, guid: 7f45ab10b73df2142a0eec1b070a52e8, type: 2}
+  _libraryObjects: {fileID: 11400000, guid: 16d898551287df14088270dc8991f965, type: 2}
   _scoreText: {fileID: 214638132}
   _nextLevelText: {fileID: 1151945616}
   _queuText: {fileID: 1830281659}
@@ -6363,7 +6363,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:9722a0600fd397f4aa1d768f9040cdaf
     m_TableEntryReference:
-      m_KeyId: 1775539182018560
+      m_KeyId: 2523253100421120
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
