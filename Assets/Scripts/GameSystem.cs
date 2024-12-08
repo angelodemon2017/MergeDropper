@@ -144,7 +144,7 @@ public class GameSystem : MonoBehaviour
         }
         else
         {
-            YandexGame.FullscreenShow();
+//            YandexGame.FullscreenShow();
         }
     }
 
