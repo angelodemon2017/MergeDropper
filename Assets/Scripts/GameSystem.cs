@@ -20,6 +20,8 @@ public class GameSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _failPanelScore;
     [SerializeField] private TextMeshProUGUI _failPanelHiScore;
     [SerializeField] private TextMeshProUGUI _failPanelHiScoreOnStartScreen;
+    [SerializeField] private TextMeshProUGUI _failADCounter;
+    [SerializeField] private Button _restartButton;
     [SerializeField] private Image _failSignal;
     [SerializeField] private SpriteRenderer _backGroundImage;
     [SerializeField] private List<Transform> _queuePositions;
@@ -40,6 +42,7 @@ public class GameSystem : MonoBehaviour
     private float _intervalSpawn = 0.1f;
     private int _currentScore = 0;
     private int _currentMaxIndex = 1;
+    private float _adFailCounter;
 
     private float _failHight = 3.8f;
     private bool _isFail = false;
@@ -53,8 +56,6 @@ public class GameSystem : MonoBehaviour
 
     private void Awake()
     {
-//        _localizedHiScore.StringChanged += UpdateHiScoreLabel;
-
         Instance = this;
         _mix2.speed = 0;
         _mainTap.onClick.AddListener(OnTouch);
@@ -84,6 +85,16 @@ public class GameSystem : MonoBehaviour
             if (_tempMO != null)
             {
                 _tempMO.transform.position = _pointSpawn.transform.position;
+            }
+        }
+        if (_adFailCounter > 0)
+        {
+            _adFailCounter -= Time.deltaTime;
+            _failADCounter.text = $"{_adFailCounter.ToString("#")}..";
+            if (_adFailCounter <= 0f)
+            {
+                _restartButton.gameObject.SetActive(true);
+                YandexGame.FullscreenShow();
             }
         }
     }
@@ -144,7 +155,11 @@ public class GameSystem : MonoBehaviour
         }
         else
         {
-            YandexGame.FullscreenShow();
+            if (YandexGame.timerShowAd == 0)
+            {
+                _adFailCounter = 3f;
+                _restartButton.gameObject.SetActive(false);
+            }
         }
     }
 
