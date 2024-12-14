@@ -19,7 +19,7 @@ public class YandexProvider : MonoBehaviour
     private const int IdBonus1 = 1;
     private const int IdBonus2 = 2;
 
-    private const string LeaderBoardName = "CryptoTop";
+    private string LeaderBoardName => _gameSystem.LO.LeaderKey;
 
     [SerializeField] private Button _buttonMix1;
     [SerializeField] private Button _buttonMix2;
