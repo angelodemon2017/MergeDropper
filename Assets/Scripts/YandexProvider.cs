@@ -19,13 +19,12 @@ public class YandexProvider : MonoBehaviour
     private const int IdBonus1 = 1;
     private const int IdBonus2 = 2;
 
-    private const string LeaderBoardName = "CryptoTop";
-
     [SerializeField] private Button _buttonMix1;
     [SerializeField] private Button _buttonMix2;
 
     private bool isOnTabGame = true;
 
+    private string LeaderBoardName => _gameSystem.LO.LeaderKey;
     public bool IsActiveGame => isOnTabGame && YandexGame.isVisibilityWindowGame;
 
     private void Awake()
